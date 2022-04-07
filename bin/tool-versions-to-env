@@ -99,10 +99,6 @@ elif [ "$ACTION_OPTION" -eq 3 ]; then
     TOOL_VERSIONS_FILE=${3:-"./.tool-versions"}
     # print single to variable to stdout
     read_tool_versions_write_to_env 3 "$TOOL_VERSIONS_FILE" "" 0
-    # shellcheck source=./.env
-    source "${ENV_FILE}"
-    # print the variable specified in stdin
-    echo "${!1^^}"
 else
     echo "First arument was not of option 1, 2, or 3"
 fi
