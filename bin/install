@@ -38,8 +38,7 @@ install_tool() {
     rm -f "${binary_path}" 2>/dev/null || true
 
     echo "Copying binary"
-    tar xzf "${download_path}" --directory "${tmp_download_dir}"
-    cp "${tmp_download_dir}"/"${filename%.tar.gz}"/${app_name} "${bin_install_path}"
+    cp "${download_path}" "${bin_install_path}"
     chmod +x "${binary_path}"
 
     echo "Cleaning up downloads"
@@ -49,7 +48,7 @@ install_tool() {
 get_filename() {
     local -r version="${1}"
 
-    echo "${app_name}-${version}.tar.gz"
+    echo "${app_name}-${version}"
 }
 
 get_download_url() {

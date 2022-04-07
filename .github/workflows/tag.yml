@@ -11,12 +11,14 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3
+      - name: copy with version in name
+        run: cp ./bin/tool-versions-to-env ./tool-versions-to-env-${{ github.ref }}
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            ./bin/tool-versions-to-env
+            .tool-versions-to-env-${{ github.ref }}
             LICENSE
             README.md
         env:
