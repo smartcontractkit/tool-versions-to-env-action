@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/usr/bin/env bash
 
 # Script to read .tool-versions library versions into environment variables
 # in the form of library_name_version=version_number
