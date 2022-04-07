@@ -38,7 +38,7 @@ install_tool() {
     rm -f "${binary_path}" 2>/dev/null || true
 
     echo "Copying binary"
-    cp "${download_path}" "${bin_install_path}"
+    cp "${download_path}" "${binary_path}"
     chmod +x "${binary_path}"
 
     echo "Cleaning up downloads"
