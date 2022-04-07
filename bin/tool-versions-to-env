@@ -51,8 +51,7 @@ read_tool_versions_write_to_env() {
         to_echo "$safe_to_echo" "Original line: $line"
 
         # split the line into a bash array using the default space delimeter
-        # shellcheck disable=SC2206
-        lineArray=($line)
+        IFS=" " read -r -a lineArray <<< "$line"
 
         # get the key and value from the array, set the key to all uppercase
         key="${lineArray[0],,}"
