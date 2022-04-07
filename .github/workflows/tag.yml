@@ -21,7 +21,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            .tool-versions-to-env-${{ steps.get_version.outputs.version }}
+            tool-versions-to-env-${{ steps.get_version.outputs.version }}
             LICENSE
             README.md
         env:
