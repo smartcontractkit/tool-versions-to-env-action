@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM alpine
+FROM ubuntu:latest
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY bin/tool-versions-to-env /tool-versions-to-env
