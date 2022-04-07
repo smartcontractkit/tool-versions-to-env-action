@@ -1,0 +1,17 @@
+# action.yml
+name: 'tool-versions-to-env'
+description: 'convert .tool-versions to environment variables in or in outputs'
+inputs:
+  path_to_tool_versions:
+    description: "Path to the .tool-versions file"
+    required: true
+    default: ".tool-versions"
+outputs:
+  generic: # output will be available to future steps
+    description: 'This command will have generic output variables based on .env'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - "2"
+    - ${{ inputs.path_to_tool_versions }}
