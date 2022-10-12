@@ -1,6 +1,6 @@
 name: test asdf plugin
 on:
-  push:
+  pull_request:
 
 jobs:
   test_asdf_plugin:
@@ -23,5 +23,19 @@ jobs:
         run: |
           OUTPUT=$(./bin/tool-versions-to-env 3 shfmt_version)
           if [ "$OUTPUT" -ne "3.4.2" ]; then
+            exit 1
+          fi
+  test_action:
+    name: Test if action sets outputs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the Repo
+        uses: actions/checkout@v3
+      - name: get versions
+        id: versions
+        uses: ./
+      - name: Verify
+        run: |
+          if [ "${{ steps.versions.outputs.shellcheck_version }}" != "0.8.0" ]; then
             exit 1
           fi
